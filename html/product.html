@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      href="https://www.beardo.in/images/shortcut-icon.png"
+    />
+    <title>Beardo | Male Grooming Experts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>combo</title>
+
+    <link rel="stylesheet" href="../css/secondNav.css" />
+    <link rel="stylesheet" href="../css/combo.css" />
+    <link rel="stylesheet" href="../css/headerFooter.css" />
+    <style>
+      #nav2Container {
+        width: 85%;
+        margin: auto;
+        background-color: black;
+      }
+      #nav2Container a,
+      #nav2Container img,
+      #nav2Container h4 {
+        background-color: black;
+      }
+      #show,
+      #show + h4 {
+        color: white;
+      }
+      #pfoot {
+        width: 95%;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      #pfoot p,
+      #pfoot table,
+      #pfoot h5,
+      #pfoot h3 {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="outer">
+      <div id="phead"></div>
+      <div id="nav"></div>
+      <div id="secondNavContainer">
+        <div id="secondNav">
+          <div id="names"></div>
+          <div id="details"></div>
+        </div>
+      </div>
+      <div
+        id="count"
+        style="
+          padding: 10px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 65%;
+          margin: auto;
+        "
+      >
+        <div id="result"></div>
+        <div id="">
+          <select name="" id="sort">
+            <option value="recomended">RECOMONDED</option>
+            <option value="high_to_low">HIGH TO LOW</option>
+            <option value="low_to_high">LOW TO HIGH</option>
+          </select>
+        </div>
+      </div>
+      <div id="products"></div>
+      <div id="pfoot"></div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import { getData, appendData } from "../js/js_files/product.js";
+  import display_combo from "../js/js_files/display_combo.js";
+  import secondNav from "../js/html_function/secondNav.js";
+  import beard from "../js/js_files/general.js";
+  import appendData_product from "../js/js_files/combo.js";
+  import phead from "../js/html_function/phead.js";
+  import pfoot from "../js/html_function/pFoot.js";
+
+  let combos_url = "http://localhost:3000/combos";
+  let beard_url = "http://localhost:3000/beard";
+  let face_url = "http://localhost:3000/BodyWash";
+  let hair_url = " http://localhost:3000/hairStyling";
+  let body_url = "http://localhost:3000/BodyNourishment";
+
+  document.getElementById("names").innerHTML = secondNav();
+
+  /*header footer*/
+  document.getElementById("phead").innerHTML = phead();
+  document.getElementById("pfoot").innerHTML = pfoot();
+  /*___________________________________________________*/
+
+  /* main */
+
+  async function value_1() {
+    let data = await getData(combos_url);
+    //console.log(data[0].imageUrl);
+    display_combo(data);
+    appendData_product(data);
+  }
+  value_1();
+
+  /* this is section for second nav*/
+  document.querySelector("#Combos").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector("#details").innerHTML = "";
+
+    async function combos() {
+      let data = await getData(combos_url);
+
+      display_combo(data);
+    }
+
+    combos();
+  });
+
+  document.querySelector("#Beard").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector("#details").innerHTML = "";
+    async function beard_1() {
+      let data = await getData(hair_url);
+
+      beard(data);
+    }
+
+    beard_1();
+  });
+
+  document.querySelector("#Face").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector("#details").innerHTML = "";
+    async function face() {
+      let data = await getData(face_url);
+      console.log(data);
+      beard(data);
+    }
+
+    face();
+  });
+
+  document.querySelector("#Hair").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector("#details").innerHTML = "";
+    async function hair_a() {
+      let data = await getData(hair_url);
+      console.log(data);
+      beard(data);
+    }
+
+    hair_a();
+  });
+
+  document.querySelector("#Body").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector("#details").innerHTML = "";
+    async function body() {
+      let data = await getData(body_url);
+      console.log(data);
+      beard(data);
+    }
+
+    body();
+  });
+</script>

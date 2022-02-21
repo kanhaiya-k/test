@@ -1,0 +1,46 @@
+* {
+  background-color: black;
+  color: white;
+}
+
+#outer {
+  margin-top: 40px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+  border: transparent 2px solid;
+  margin: 0 auto;
+  width: 45%;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 25px;
+  height: 45px;
+}
+
+.logo img {
+  height: 85%;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  column-gap: 20%;
+}
+
+.icons div {
+  height: 25px;
+  width: 25px;
+  padding-top: 8px;
+}
+
+.icons img {
+  height: 100%;
+  width: 100%;
+}
